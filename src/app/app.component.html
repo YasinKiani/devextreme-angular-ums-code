@@ -1,0 +1,94 @@
+<div class="app-container">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.open]="sidebarOpen()">
+    <div class="sidebar-header">
+      <button class="close-btn" (click)="toggleSidebar()" aria-label="بستن منو">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="logo">
+        <i class="fas fa-user-shield"></i>
+        <span>سامانه مدیریت</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item active">
+        <i class="fas fa-users"></i>
+        <span>مدیریت کاربران</span>
+      </a>
+      <a class="nav-item">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>داشبورد</span>
+      </a>
+      <a class="nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>گزارش‌ها</span>
+      </a>
+      <a class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>تنظیمات</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="info">
+          <p class="name">یاسین کیانی</p>
+          <p class="email">yasinkiani.dev&#64;gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay for mobile -->
+  <div
+    class="overlay"
+    [class.show]="sidebarOpen()"
+    (click)="toggleSidebar()"
+  ></div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <button
+        class="menu-btn"
+        (click)="toggleSidebar()"
+        aria-label="باز کردن منو"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="page-title">
+        <h1>ادمین  کاربران</h1>
+        <p>مدیریت کاربران در این بخش انجام می‌شود.</p>
+      </div>
+      <div class="top-actions">
+        <button mat-icon-button aria-label="اعلان‌ها">
+          <i class="fas fa-bell"></i>
+        </button>
+        <button mat-icon-button aria-label="جستجو">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <div class="content-area">
+      <app-user-list
+        [users]="users()"
+        (add)="onAddUser()"
+        (edit)="onEditUser($event)"
+        (delete)="onDeleteUser($event)"
+      ></app-user-list>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>برنامه‌نویس: یاسین کیانی</p>
+      <p>© ۱۴۰۴ - تمامی حقوق محفوظ است</p>
+    </footer>
+  </div>
+</div>

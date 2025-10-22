@@ -1,0 +1,125 @@
+<div class="user-list">
+  <div class="header">
+    <div class="title-group">
+      <h2>مدیریت کاربران</h2>
+      <p>افزودن، مشاهده، ویرایش و حذف کاربران در یک نگاه</p>
+    </div>
+    <button mat-raised-button color="primary" (click)="onAdd()">
+      <i class="fas fa-user-plus"></i>
+      <span>افزودن کاربر</span>
+    </button>
+  </div>
+
+  <div class="user-grid-wrapper">
+    <dx-data-grid
+      [dataSource]="users"
+      [columnAutoWidth]="true"
+      [showBorders]="true"
+      [rowAlternationEnabled]="true"
+      [rtlEnabled]="true"
+      [allowColumnResizing]="true"
+      class="user-grid"
+    >
+      <dxo-scrolling
+        mode="standard"
+        showScrollbar="always"
+        [scrollByContent]="true"
+        [useNative]="true"
+      ></dxo-scrolling>
+      <dxo-paging [pageSize]="8"></dxo-paging>
+      <dxo-pager
+        [visible]="true"
+        displayMode="compact"
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[8, 16, 32]"
+        [showInfo]="true"
+      ></dxo-pager>
+      <dxo-search-panel
+        [visible]="true"
+        [highlightCaseSensitive]="false"
+        placeholder="جستجوی سریع..."
+      ></dxo-search-panel>
+      <dxo-filter-row [visible]="true" applyFilter="auto"></dxo-filter-row>
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+
+      <dxi-column
+        caption="عکس"
+        dataField="profilePhoto"
+        [allowFiltering]="false"
+        [allowSorting]="false"
+        [width]="110"
+        cellTemplate="photoCell"
+      ></dxi-column>
+      <dxi-column
+        dataField="firstName"
+        caption="نام"
+        [minWidth]="140"
+      ></dxi-column>
+      <dxi-column
+        dataField="lastName"
+        caption="نام خانوادگی"
+        [minWidth]="160"
+      ></dxi-column>
+      <dxi-column
+        dataField="age"
+        caption="سن"
+        dataType="number"
+        [minWidth]="100"
+      ></dxi-column>
+      <dxi-column
+        dataField="education"
+        caption="مدرک تحصیلی"
+        [minWidth]="160"
+      ></dxi-column>
+      <dxi-column
+        dataField="nationalId"
+        caption="کد ملی"
+        [minWidth]="140"
+      ></dxi-column>
+      <dxi-column
+        dataField="birthDate"
+        caption="تاریخ تولد"
+        [minWidth]="160"
+      ></dxi-column>
+      <dxi-column
+        caption="عملیات"
+        [allowFiltering]="false"
+        [allowSorting]="false"
+        [width]="160"
+        cellTemplate="actionsCell"
+      ></dxi-column>
+
+      <div *dxTemplate="let data of 'photoCell'">
+        <img
+          class="avatar"
+          [src]="(data.value || '').trim() || defaultAvatar"
+          alt="عکس پروفایل"
+        />
+      </div>
+
+      <div *dxTemplate="let data of 'actionsCell'">
+        <div class="action-buttons">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="onEdit(data.data)"
+            aria-label="ویرایش کاربر"
+            title="ویرایش کاربر"
+          >
+            <i class="fas fa-edit"></i>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="onDelete(data.data)"
+            aria-label="حذف کاربر"
+            title="حذف کاربر"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+      </div>
+    </dx-data-grid>
+  </div>
+</div>

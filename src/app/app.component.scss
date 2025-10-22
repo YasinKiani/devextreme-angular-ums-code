@@ -1,0 +1,355 @@
+@use "@angular/material" as mat;
+
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  background: #f5f7fa;
+  direction: rtl;
+}
+
+/* ==================== Sidebar ==================== */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, #1a237e 0%, #283593 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+
+  .sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .close-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      i {
+        font-size: 22px;
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+
+      i {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 0.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+
+      i {
+        font-size: 20px;
+        width: 20px;
+        text-align: center;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+
+      &.active {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .sidebar-footer {
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          font-size: 20px;
+        }
+      }
+
+      .info {
+        flex: 1;
+        min-width: 0;
+
+        .name {
+          margin: 0;
+          font-weight: 500;
+          font-size: 0.9rem;
+        }
+
+        .email {
+          margin: 0;
+          font-size: 0.75rem;
+          opacity: 0.8;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}
+
+/* Overlay for mobile */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+/* ==================== Main Content ==================== */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.top-bar {
+  background: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+
+  .menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    color: #1a237e;
+
+    &:hover {
+      background: rgba(26, 35, 126, 0.05);
+    }
+
+    i {
+      font-size: 24px;
+    }
+  }
+
+  .page-title {
+    flex: 1;
+
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #1a237e;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0.25rem 0 0;
+      font-size: 0.875rem;
+      color: #666;
+    }
+  }
+
+  .top-actions {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      color: #1a237e;
+    }
+  }
+}
+
+.content-area {
+  flex: 1;
+  overflow: auto;
+  padding: 1.5rem;
+  background: #f5f7fa;
+}
+
+.app-footer {
+  background: white;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+
+  p {
+    margin: 0.25rem 0;
+    font-size: 0.875rem;
+    color: #666;
+  }
+}
+
+/* ==================== Responsive Design ==================== */
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(100%);
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    .sidebar-header .close-btn {
+      display: block;
+    }
+  }
+
+  .overlay {
+    display: block;
+
+    &:not(.show) {
+      pointer-events: none;
+    }
+  }
+
+  .top-bar .menu-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-bar {
+    padding: 1rem;
+
+    .page-title {
+      h1 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        display: none;
+      }
+    }
+
+    .top-actions {
+      button {
+        padding: 8px;
+      }
+    }
+  }
+
+  .content-area {
+    padding: 1rem;
+  }
+
+  .sidebar {
+    width: 260px;
+  }
+
+  .app-footer {
+    padding: 0.75rem 1rem;
+
+    p {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 80%;
+    max-width: 280px;
+  }
+
+  .top-bar {
+    padding: 0.75rem;
+
+    .page-title h1 {
+      font-size: 1.1rem;
+    }
+  }
+
+  .content-area {
+    padding: 0.75rem;
+  }
+
+  .app-footer p:last-child {
+    display: none;
+  }
+}
+.contact {
+  color: #1a237e;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  :host {
+    padding: 1rem;
+  }
+
+  .app-header {
+    padding: 1.25rem;
+  }
+
+  .brand p {
+    font-size: 0.95rem;
+  }
+}

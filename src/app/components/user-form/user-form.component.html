@@ -1,0 +1,143 @@
+<form
+  class="dialog-form"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  autocomplete="off"
+>
+  <h2 mat-dialog-title>{{ dialogTitle() }}</h2>
+
+  <div mat-dialog-content class="dialog-content">
+    <section class="photo-section">
+      <img [src]="photoPreview" alt="پیش‌نمایش پروفایل" class="photo-preview" />
+      <div class="photo-actions">
+        <label class="upload-button" aria-label="انتخاب فایل تصویر">
+          <input type="file" accept="image/*" (change)="onFileChange($event)" />
+          <i class="fas fa-upload"></i>
+          <span>انتخاب عکس جدید</span>
+        </label>
+        <button
+          type="button"
+          mat-button
+          color="primary"
+          (click)="useDefaultAvatar()"
+        >
+          <i class="fas fa-sync-alt"></i>
+          <span>استفاده از تصویر پیش‌فرض</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>نام</mat-label>
+        <input
+          matInput
+          formControlName="firstName"
+          placeholder="نام را وارد کنید"
+        />
+        <mat-error *ngIf="form.controls.firstName.hasError('required')">
+          وارد کردن نام الزامی است.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>نام خانوادگی</mat-label>
+        <input
+          matInput
+          formControlName="lastName"
+          placeholder="نام خانوادگی را وارد کنید"
+        />
+        <mat-error *ngIf="form.controls.lastName.hasError('required')">
+          وارد کردن نام خانوادگی الزامی است.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>سن</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="age"
+          min="0"
+          max="150"
+          placeholder="سن"
+        />
+        <mat-error *ngIf="form.controls.age.hasError('required')">
+          سن را وارد کنید.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            form.controls.age.hasError('min') ||
+            form.controls.age.hasError('max')
+          "
+        >
+          سن باید بین 0 تا 150 باشد.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>مدرک تحصیلی</mat-label>
+        <mat-select formControlName="education">
+          <mat-option *ngFor="let option of educationOptions" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls.education.hasError('required')">
+          انتخاب مدرک تحصیلی الزامی است.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>کد ملی</mat-label>
+        <input
+          matInput
+          formControlName="nationalId"
+          maxlength="10"
+          placeholder="کد ملی"
+        />
+        <mat-error *ngIf="form.controls.nationalId.hasError('required')">
+          کد ملی را وارد کنید.
+        </mat-error>
+        <mat-error *ngIf="form.controls.nationalId.hasError('pattern')">
+          کد ملی باید 10 رقم باشد.
+        </mat-error>
+        <mat-error *ngIf="form.controls.nationalId.hasError('notUnique')">
+          این کد ملی قبلاً ثبت شده است.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>تاریخ تولد</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="birthDate"
+          [min]="minBirthDate"
+          [max]="maxBirthDate"
+          placeholder="تاریخ تولد"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.controls.birthDate.hasError('required')">
+          انتخاب تاریخ تولد الزامی است.
+        </mat-error>
+      </mat-form-field>
+    </section>
+  </div>
+
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-stroked-button type="button" color="primary" (click)="cancel()">
+      <i class="fas fa-times"></i>
+      <span>انصراف</span>
+    </button>
+    <button mat-flat-button color="primary" type="submit">
+      <i class="fas fa-save"></i>
+      <span>ذخیره اطلاعات</span>
+    </button>
+  </div>
+
+  <p class="dialog-footer">برنامه‌نویس: یاسین کیانی</p>
+</form>

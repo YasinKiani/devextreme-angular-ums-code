@@ -1,0 +1,172 @@
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.header {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header button {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(63, 81, 181, 0.2);
+  transition: all 0.3s ease;
+
+  i {
+    font-size: 18px;
+  }
+
+  &:hover {
+    box-shadow: 0 6px 16px rgba(63, 81, 181, 0.3);
+    transform: translateY(-2px);
+  }
+}
+
+.header button .material-symbols-outlined {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title-group h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1a237e;
+  font-weight: 600;
+}
+
+.title-group p {
+  margin: 0;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.user-grid {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.user-grid-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: auto;
+  padding: 0.25rem;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e8eaf6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.action-buttons button {
+  transition: all 0.2s ease;
+
+  i {
+    font-size: 18px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.action-buttons .material-symbols-outlined {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.footer {
+  display: none; // حذف شده چون footer در app.component است
+}
+
+/* ==================== Responsive Design ==================== */
+@media (max-width: 1024px) {
+  .header {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-grid-wrapper {
+    overflow-x: auto;
+  }
+
+  .user-grid {
+    min-width: 720px; // ایجاد اسکرول افقی روی موبایل
+  }
+  .header {
+    padding: 1rem;
+
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .title-group h2 {
+    font-size: 1.25rem;
+  }
+
+  .title-group p {
+    font-size: 0.8rem;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-width: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.875rem;
+  }
+
+  .title-group h2 {
+    font-size: 1.1rem;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .action-buttons {
+    gap: 0.25rem;
+  }
+
+  .action-buttons button {
+    padding: 6px;
+  }
+}

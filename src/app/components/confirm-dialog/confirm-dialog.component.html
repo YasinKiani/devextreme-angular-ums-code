@@ -1,0 +1,16 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+  <div class="dialog-content" mat-dialog-content>
+    <p>{{ data.description }}</p>
+  </div>
+  <div class="dialog-actions" mat-dialog-actions>
+    <button mat-stroked-button color="primary" (click)="cancel()">
+      <i class="fas fa-times"></i>
+      <span>{{ data.cancelText || "انصراف" }}</span>
+    </button>
+    <button mat-flat-button color="warn" (click)="confirm()">
+      <i class="fas fa-trash-alt"></i>
+      <span>{{ data.confirmText || "حذف" }}</span>
+    </button>
+  </div>
+</div>
