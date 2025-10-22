@@ -69,7 +69,7 @@ npx ng lint
 <br>
 #### 📋 صفحه اصلی و جدول کاربران
 
-<img width="1433" height="721" alt="1" src="https://github.com/user-attachments/assets/d97d5d57-42de-47ec-acd6-db4e51cbbe8f" />
+<img width="1433" height="721" alt="1" src="https://github.com/user-attachments/assets/49dbbafe-9c1d-4a56-9e97-19658347e9d2" />
 
 _نمایش جدول DevExtreme با قابلیت‌های جستجو، فیلتر و مرتب‌سازی_
 
@@ -77,8 +77,8 @@ _نمایش جدول DevExtreme با قابلیت‌های جستجو، فیلت
 <br>
 #### ✏️ فرم افزودن/ویرایش کاربر
 
-<img width="1431" height="725" alt="2" src="https://github.com/user-attachments/assets/b6a5dbd5-43e3-4d18-94ae-a37ada93273b" />
-<img width="1434" height="726" alt="3" src="https://github.com/user-attachments/assets/6ebc67cd-9551-49f6-b51b-2f49ad766223" />
+<img width="1431" height="725" alt="2" src="https://github.com/user-attachments/assets/93aa7d9b-31b0-40da-ad23-9f842bb76305" />
+<img width="1434" height="726" alt="3" src="https://github.com/user-attachments/assets/5b57fcfe-2dc4-462d-9b25-83f1d2888a92" />
 
 
 _دیالوگ سفارشی با اعتبارسنجی، بارگذاری تصویر و تاریخ جلالی_
@@ -88,7 +88,7 @@ _دیالوگ سفارشی با اعتبارسنجی، بارگذاری تصوی
 
 #### ⚠️ دیالوگ تایید حذف
 
-<img width="1431" height="724" alt="4" src="https://github.com/user-attachments/assets/177170cb-7b62-4663-93ca-2444c1329390" />
+<img width="1431" height="724" alt="4" src="https://github.com/user-attachments/assets/5872e741-8bed-43c8-8555-0df0c740761b" />
 
 _دیالوگ تایید سفارشی با Material Design_
 
