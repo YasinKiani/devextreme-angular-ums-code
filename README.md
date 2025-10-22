@@ -28,7 +28,7 @@
 <br><br>
 ### 🌐 دمو آنلاین
 
-🔗 [مشاهده دمو زنده]([/](https://yasinkiani.github.io/devextreme-angular-ums-web/))
+🔗 [مشاهده دمو زنده]((https://yasinkiani.github.io/devextreme-angular-ums-web/))
 
 
 ---
